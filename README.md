@@ -1,1 +1,2 @@
-# semidefinite-portfolio-optimization
+# Cardinality-Constrained Portfolio Optimization via Semidefinite Programming
+

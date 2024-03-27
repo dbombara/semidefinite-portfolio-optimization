@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+literature_review.md
+literature/
+
 # C extensions
 *.so
 

@@ -60,7 +60,7 @@ fig.savefig("img/0011b.pdf", bbox_inches='tight')
 
 ####### Plot obj value
 fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
-surf = ax.plot_surface(riskPrefMat,cardinalityMat,variance,cmap=cm.coolwarm,linewidth=0, antialiased=False)
+surf = ax.plot_surface(riskPrefMat,cardinalityMat,obj_val,cmap=cm.coolwarm,linewidth=0, antialiased=False)
 ax.set_title("Objective Value")
 ax.set_xlabel("Risk")
 ax.set_ylabel("Carinality")
@@ -69,3 +69,5 @@ fig.colorbar(surf, shrink=0.5, aspect=5)
 plt.subplots_adjust(wspace=0.8, hspace=0.7)
 fig.savefig("img/png/0011c.png", bbox_inches='tight')
 fig.savefig("img/0011c.pdf", bbox_inches='tight')
+
+plt.show()

@@ -79,12 +79,11 @@ class Portfolio():
     
     def OptimizeSemiDef(
         self,
-        method: str = "mean-variance", # or "robust"
-        cardinality = 5, # no constraint
-        long_only = None, # is this a long-only portfolio?
-        l2_norm: float = None,
+        method: str      = "mean-variance",
+        cardinality      = 5, # no constraint
+        l2_norm: float   = None,
         risk_pref: float = 0.01,
-        T = None, # sample size
+        epsil = None
         ):
         n_ = self.n
         stock_prices_ = self.stock_prices
@@ -103,13 +102,20 @@ class Portfolio():
         objective = cp.Minimize(cp.trace(sigma_ @ W) - risk_pref * (iota.T @ W @ mu_))
         #
         constraints = [
-        cp.trace(Iota @ W) == 1,
-        cp.quad_form(iota, cp.abs(W)) <= k * cp.trace(W),
+            cp.trace(Iota @ W) == 1,
+            cp.quad_form(iota, cp.abs(W)) <= k * cp.trace(W),
         ]
-        #
+        
+        # Adding the constraint on the L2 norm bound
         if l2_norm is not None:
             constraints.append(cp.trace(W) <= l2_norm**2)
-        t0 = time.time()
+            
+        self.S_mu = 1/self.T * np.diag(np.diag(self.sigma))
+        # Adding the robustness constraint
+        if epsil is not None:
+            constraints.append(cp.trace(self.S_mu @ W) <= epsil)
+            
+        t0 = time.time() # timing the optimization solver
         prob = cp.Problem(objective, constraints)
         self.obj_value = prob.solve(solver=cp.MOSEK,verbose=False)
         t1 = time.time()

@@ -48,7 +48,7 @@ fig.savefig("img/0012b.pdf", bbox_inches='tight')
 
 ### Plot Objective Function Value
 fig, ax = plt.subplots(subplot_kw={"projection":"3d"})
-surf = ax.plot_surface(var1, var2, variance,cmap=cm.coolwarm,linewidth=0, antialiased=False)
+surf = ax.plot_surface(var1, var2, obj_val,cmap=cm.coolwarm,linewidth=0, antialiased=False)
 ax.set_title("Objective Value")
 ax.set_xlabel("Risk")
 ax.set_ylabel(str1)

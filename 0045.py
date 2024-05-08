@@ -13,19 +13,17 @@ rcp['text.usetex'] = True
 rcp['font.size'], rcp['axes.labelsize'],rcp['axes.titlesize'] = 16, 16,18
 rcp['xtick.labelsize'],rcp['ytick.labelsize'] = 14, 14
 
-str1 = "Number of Stocks"
+str1 = "$\epsilon$"
 
-try:
-    nf = np.load("data/EfficientFrontierNumStocks.npz")
-except:
-    nf = np.load("data/0013.npz")
+nf = np.load("data/0045.npz")
     
 returns, variance = nf["returns"], nf["variance"]
 obj_val = nf["obj_val"]
-num_stocks = nf["num_stocks"]
+epsil_vec = nf["epsil_vec"]
+risk_pref_vec = nf["risk_pref_vec"]
 
 ### Get meshgrid
-var1, var2 = np.meshgrid(risk_pref_vec,num_stocks)
+var1, var2 = np.meshgrid(risk_pref_vec,epsil_vec)
 
 ### Plot Returns
 fig, ax = plt.subplots(subplot_kw={"projection":"3d"})
@@ -34,7 +32,7 @@ ax.set_title("Returns")
 ax.set_xlabel("Risk")
 ax.set_ylabel(str1)
 fig.colorbar(surf, shrink=0.5,aspect=5)
-fig.savefig("img/0013a.pdf", bbox_inches='tight')
+fig.savefig("img/0045a.pdf", bbox_inches='tight')
 
 ### Plot Variance
 fig, ax = plt.subplots(subplot_kw={"projection":"3d"})
@@ -43,7 +41,7 @@ ax.set_title("Variance")
 ax.set_xlabel("Risk")
 ax.set_ylabel(str1)
 fig.colorbar(surf, shrink=0.5,aspect=5)
-fig.savefig("img/0013b.pdf", bbox_inches='tight')
+fig.savefig("img/0045b.pdf", bbox_inches='tight')
 
 ### Plot Objective Function Value
 fig, ax = plt.subplots(subplot_kw={"projection":"3d"})
@@ -52,4 +50,4 @@ ax.set_title("Objective Value")
 ax.set_xlabel("Risk")
 ax.set_ylabel(str1)
 fig.colorbar(surf, shrink=0.5,aspect=5)
-fig.savefig("img/0013c.pdf", bbox_inches='tight')
+fig.savefig("img/0045c.pdf", bbox_inches='tight')

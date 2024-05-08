@@ -52,3 +52,23 @@ ax.set_ylabel("Portfolio Return")
 plt.subplots_adjust(wspace=0.3, hspace=0.7)
 #
 fig.savefig("img/0021b.pdf",bbox_inches="tight")
+
+############ Sharpe Ratio #######################
+returns = mean_returns
+variance = mean_var
+sr = returns/np.sqrt(variance)
+
+fig, ax = plt.subplots(1,1,figsize=(7,2))
+colors = pl.cm.hsv(returns/max(returns))
+sc = ax.scatter(K_vec, sr, marker='o', c=colors)
+
+sm = ScalarMappable(cmap=pl.cm.hsv, norm=plt.Normalize(vmin=min(returns), vmax=max(returns)))
+plt.colorbar(sm, ax=ax,label="Expected Return")
+
+ax.set_title("Sharpe Ratio $S$ for Varying $k$")
+ax.set_xlabel("Desired Cardinality, $k$")
+ax.set_ylabel("Sharpe Ratio")
+
+plt.subplots_adjust(wspace=0.3, hspace=0.7)
+fig.savefig("img/0021c.pdf",bbox_inches="tight")
+plt.show()

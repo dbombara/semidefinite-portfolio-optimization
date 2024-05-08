@@ -25,17 +25,36 @@ fig.savefig("img/00241.pdf",bbox_inches="tight")
 
 ###### Plot 2: Plot direct correlations #################################################
 fig, ax = plt.subplots(1,3,figsize=(9,4))
-ax[0].plot(deltavec, returns)
+ax[0].plot(deltavec, returns, marker="o")
 ax[0].set_ylabel("Portfolio Returns")
 ax[0].set_xlabel("$L_2$-Norm Bound, $\delta$")
 #
-ax[1].plot(deltavec, variance)
+ax[1].plot(deltavec, variance, marker="o")
 ax[1].set_xlabel("$L_2$-Norm Bound, $\delta$")
 ax[1].set_ylabel("Portfolio Variance")
 #
-ax[2].plot(deltavec, obj_val)
+ax[2].plot(deltavec, obj_val, marker="o")
 ax[2].set_xlabel("$L_2$-Norm Bound, $\delta$")
 ax[2].set_ylabel("Objective Value")
 #
 plt.subplots_adjust(wspace=0.7, hspace=0.7)
 fig.savefig("img/00242.pdf",bbox_inches="tight")
+
+#######################
+
+sr = returns/np.sqrt(variance)
+
+fig, ax = plt.subplots(1,1,figsize=(7,2))
+colors = pl.cm.hsv(returns/max(returns))
+sc = ax.scatter(deltavec, sr, marker='o', c=colors)
+
+sm = ScalarMappable(cmap=pl.cm.hsv, norm=plt.Normalize(vmin=min(returns), vmax=max(returns)))
+plt.colorbar(sm, ax=ax,label="Expected Return")
+
+ax.set_title("Sharpe Ratio $S$ for Varying $\delta$")
+ax.set_xlabel("$L_2$-norm Bound, $\delta$")
+ax.set_ylabel("Sharpe Ratio")
+
+plt.subplots_adjust(wspace=0.3, hspace=0.7)
+fig.savefig("img/00243.pdf",bbox_inches="tight")
+plt.show()

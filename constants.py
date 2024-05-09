@@ -16,4 +16,4 @@ risk_pref_vec = np.arange(0.01, 1, 0.01)
 deltavec = np.arange(0.5,1.25,0.01)
 
 df_ = pd.read_csv("resources/out.csv", parse_dates=True, index_col="Date")
-df_ = df_.dropna(axis=1,how='any')
+df_ = df_.dropna(axis=1,how='any') # also return the indices of the columns that were dropped

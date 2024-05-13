@@ -8,6 +8,10 @@ from tqdm import tqdm
 from matplotlib import cm
 from matplotlib.ticker import LinearLocator
 
+"""0011.py
+This script is used to plot the efficient frontier for different cardinality constraints and risk preferences.
+"""
+
 rcp['font.family'],rcp['font.serif'] = 'serif', ['Computer Modern Roman']
 rcp['text.usetex'] = True
 rcp['font.size'], rcp['axes.labelsize'],rcp['axes.titlesize'] = 16, 16,18

@@ -4,8 +4,8 @@ import pandas as pd
 from portfolio import Portfolio
 from constants import *
 
-"""0011.py
-EFficient Frontier under Varying Cardinality Constraints
+"""0011_.py
+This script is used to generate the efficient frontier for different cardinality constraints and risk preferences.
 """
 
 i, j = 0 ,0

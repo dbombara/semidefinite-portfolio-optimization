@@ -4,9 +4,8 @@ import pandas as pd
 from portfolio import Portfolio
 from constants import *
 
-"""0012.py
-Exploring the effects of (1) varying risk and (2) varying norm bound.
-previous name: EfficientFrontierL2norm.py
+"""0012_.py
+This script is for generating the efficient frontier for different constraints and the L2 norm and different risk preferences.
 """
 
 i, j = 0 ,0

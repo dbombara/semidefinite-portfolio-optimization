@@ -1,3 +1,2 @@
-# Sharpe ratios
-
+# Testing strategies on real data
 

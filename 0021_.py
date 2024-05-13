@@ -4,6 +4,7 @@ import pandas as pd
 from portfolio import Portfolio
 import matplotlib.pyplot as plt
 from constants import *
+
 """_summary_
 0021ExpCardinality
 
@@ -29,7 +30,6 @@ def main():
             p = Portfolio(stock_prices = df)
             weights, assets = p.OptimizeSemiDef(method="mean-variance",cardinality=k)
             try:
-                #weights = p.EnforceCardinality(weights,k)
                 pass
             except:
                 pass
@@ -49,7 +49,7 @@ def main():
         std_var[i] = np.std(vv)
         i += 1
         
-    outfile = "data/cardinality.npz"
+    outfile = "data/0021.npz"
     np.savez(
         outfile,
         K_vec = K_vec,

@@ -17,7 +17,10 @@ rcp['text.usetex'] = True
 rcp['font.size'], rcp['axes.labelsize'],rcp['axes.titlesize'] = 16, 16,18
 rcp['xtick.labelsize'],rcp['ytick.labelsize'] = 14, 14
 
-nf = np.load("data/EfficientFrontierCardinality.npz")
+try:
+    nf = np.load("data/0011.npz")
+except:
+    nf = np.load("data/EfficientFrontierCardinality.npz")
 
 returns, variance = nf["returns"], nf["variance"]
 cardinality_EF, risk_pref_vec, obj_val = nf["cardinality_EF"], nf["risk_pref_vec"], nf["obj_val"]

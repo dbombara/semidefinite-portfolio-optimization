@@ -35,7 +35,8 @@ for risk_pref in tqdm(risk_pref_vec):
         i += 1
     j += 1
     
-outfile = "data/EfficientFrontierCardinality.npz"
+#outfile = "data/EfficientFrontierCardinality.npz"
+outfile = "data/0011.py"
 np.savez(
     outfile,
     cardinality_EF = cardinality_EF,

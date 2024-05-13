@@ -8,7 +8,10 @@ rcp['text.usetex'] = True
 rcp['font.size'], rcp['axes.labelsize'],rcp['axes.titlesize'] = 16, 16,18
 rcp['xtick.labelsize'],rcp['ytick.labelsize'] = 14, 14
 
-outfile = "data/cardinality.npz"
+try:
+    outfile = "data/0021.npz"
+except:
+    outfile = "data/cardinality.npz"
 npzfile = np.load(outfile)
 K_vec = npzfile["K_vec"]
 m_obj = npzfile["m_obj"]
